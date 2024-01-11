@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../../../../components/ui/Card";
 import { Icon } from "@iconify/react";
 import axios from "axios";
+import "core-js/stable/atob";
 import { jwtDecode } from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";

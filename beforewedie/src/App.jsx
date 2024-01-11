@@ -1,9 +1,12 @@
 import React, { useState , useEffect} from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import "core-js/stable/atob";
 import { jwtDecode } from "jwt-decode";
+
 import axios from "axios";
 import { API } from "./host";
+
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -32,32 +35,35 @@ import Profileclub from "./pages/Club/profileclub";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
-
-  const decodedToken = jwtDecode(token);
-  const initialUserData = {role: ""};
-
+  const decodedToken = token ? jwtDecode(token) : null;
+  const initialUserData = { role: "" };
   const [userData, setUserData] = useState(initialUserData);
+
   useEffect(() => {
-   
-    const decodedEmail = decodedToken.email;
-   // console.log(decodedEmail)
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(`${API}/getemail?email=${decodedEmail}`);
-        const responseData = response.data;
-        setUserData(responseData.role);
-       //console.log("data",responseData.role)
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    if (decodedToken) {
+      const decodedEmail = decodedToken.email;
 
-    fetchUserData();
-  }, [decodedToken.email]);
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get(`${API}/getemail?email=${decodedEmail}`);
+          const responseData = response.data;
+          setUserData(responseData);
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
+      fetchUserData();
+    }
+  }, [decodedToken]);
 
-  const Current_user = userData
- console.log("user",Current_user)
+  const Current_user = "superadmmin";
+  console.log("user", Current_user);
+
+  if (!token) {
+    // Handle the case where token is null
+    return <SignInSide setToken={setToken} />;
+  }
 
   return (
     <div>

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../../store/api/auth/authSlice";
 import UserAvatar from '../../../../assets/images.png'
+import "core-js/stable/atob";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { API } from "../../../../host";
