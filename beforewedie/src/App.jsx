@@ -47,7 +47,7 @@ function App() {
         try {
           const response = await axios.get(`${API}/getemail?email=${decodedEmail}`);
           const responseData = response.data;
-          setUserData(responseData);
+          setUserData(responseData.role);
         } catch (error) {
           console.log(error);
         }
@@ -57,7 +57,7 @@ function App() {
     }
   }, [decodedToken]);
 
-  const Current_user = "superadmmin";
+  const Current_user = userData;
   console.log("user", Current_user);
 
   if (!token) {
