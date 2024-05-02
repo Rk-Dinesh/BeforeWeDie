@@ -77,12 +77,7 @@ const ProfileUser = () => {
                       alt=""
                       className="w-full h-full object-cover rounded-full"
                     />
-                    {/* <Link
-                      to="#"
-                      className="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center justify-center md:top-[140px] top-[100px]"
-                    >
-                      <Icon icon="heroicons:pencil-square" />
-                    </Link> */}
+                   
                     <br />
                     <div className="text-sm font-light text-slate-600 dark:text-slate-400">
                       {user?.userid || "N/A"}
@@ -222,7 +217,7 @@ const ProfileUser = () => {
                   <div style={{ position: 'absolute', bottom: '40px', right: '15px' }} >
                     <button
                       onClick={() => handleDelete(post.community_id)}
-                      className="bg-slate-100 text-slate-400  p-2.5  mb-1.5 rounded-full hover:bg-red-200 hover: text-red-600">
+                      className="bg-slate-100 text-slate-400  p-2.5  mb-1.5 rounded-full hover:bg-red-200 hovertext-red-600">
                       <Icon icon="heroicons:trash" className="text-slate-400 dark:text-slate-400 hover:text-danger-600 dark:hover:text-danger-600" />
                     </button>
                   </div>

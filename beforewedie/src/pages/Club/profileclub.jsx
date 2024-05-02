@@ -87,9 +87,9 @@ const ProfileClub = () => {
                 <div className=" text-start text-xl font-medium text-slate-900 dark:text-slate-200 mb-[3px]">
                   Description :
                 </div>
-                <div className="text-base font-light text-slate-600 dark:text-slate-300 font-medium mb-1">
+                <div className="text-base  text-slate-600 dark:text-slate-300 font-medium mb-1">
                   <div
-                    className="text-base font-light text-slate-600 dark:text-slate-300 font-medium mb-1"
+                    className="text-base  text-slate-600 dark:text-slate-300 font-medium mb-1"
                     style={{ whiteSpace: "pre-wrap" }}
                   >
                     {user?.clubdesc
@@ -187,7 +187,7 @@ const ProfileClub = () => {
                   >
                     <button
                       onClick={() => handleDelete(post.clubpost_id)}
-                      className="bg-slate-100 text-slate-400  p-2.5  mb-1.5 rounded-full hover:bg-red-200 hover: text-red-600"
+                      className="bg-slate-100 text-slate-400  p-2.5  mb-1.5 rounded-full hover:bg-red-200 hover:text-red-600"
                     >
                       <Icon
                         icon="heroicons:trash"

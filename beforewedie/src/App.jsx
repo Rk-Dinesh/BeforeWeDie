@@ -10,7 +10,6 @@ import { API } from "./host";
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import SignInSide from "./pages/auth/login1";
 import Dashboard from "./pages/dashboard";
 import Admin from "./pages/Admin";
 import Users from "./pages/Users";
@@ -69,8 +68,8 @@ function App() {
     <div>
       <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
-        {/* <Route path="" element={<Login setToken={setToken} />} /> */}
-        <Route path="" element={<SignInSide setToken={setToken} />} />
+        <Route path="" element={<Login setToken={setToken} />} />
+       
         <Route path="/forgotpassword" element={<ForgotPassword/>} />
         <Route path="/otpverify" element={<OtpVerify />} />
         <Route path="/resetpassword" element={<ResetPassword/>} />
@@ -85,7 +84,7 @@ function App() {
           <Route path="pitstop" element={<PitstopDetails />} />
           <Route path="transport" element={<TransportDetails />} />
           <Route path="traveller" element={< TravellerDetails/>} />
-          {/* <Route path="page" element={<SignInSide />} /> */}
+        
           
           <Route path="form" element={<AdminForm />} />
           <Route path="updateform" element={<UpdateForm Current_user ={Current_user}/>} />
