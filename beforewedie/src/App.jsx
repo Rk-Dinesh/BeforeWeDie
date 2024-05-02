@@ -25,11 +25,8 @@ import PitstopDetails from "./pages/TripDetails/pitstop";
 import TransportDetails from "./pages/TripDetails/transport";
 import TravellerDetails from "./pages/TripDetails/traveller";
 import ProfileUser from "./pages/Users/ProfileUser";
-import FollowUser from "./pages/Users/followers";
 import Club from "./pages/Club";
-import ForgotPassword from "./pages/auth/forgotpassword"
-import OtpVerify from "./pages/auth/otpverification";
-import ResetPassword from "./pages/auth/changepassword";
+
 import Profileclub from "./pages/Club/profileclub";
 
 function App() {
@@ -70,9 +67,6 @@ function App() {
       <Routes>
         <Route path="" element={<Login setToken={setToken} />} />
        
-        <Route path="/forgotpassword" element={<ForgotPassword/>} />
-        <Route path="/otpverify" element={<OtpVerify />} />
-        <Route path="/resetpassword" element={<ResetPassword/>} />
         <Route path="/*" element={token ? <Layout token={token}/> : <Navigate to='/' />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="user" element={<Users Current_user ={Current_user}/>} />
@@ -84,8 +78,7 @@ function App() {
           <Route path="pitstop" element={<PitstopDetails />} />
           <Route path="transport" element={<TransportDetails />} />
           <Route path="traveller" element={< TravellerDetails/>} />
-        
-          
+
           <Route path="form" element={<AdminForm />} />
           <Route path="updateform" element={<UpdateForm Current_user ={Current_user}/>} />
           <Route path="profile" element={<UserProfile token={token} Current_user ={Current_user}/>} />

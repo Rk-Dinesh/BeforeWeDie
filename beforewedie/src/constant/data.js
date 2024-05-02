@@ -28,7 +28,8 @@ export const menuItems = [
     isHide: true,
     icon: "heroicons-outline:user-group",
     link: "admin"
-  }
+  },
+ 
 ];
 
 export const topMenu = [
