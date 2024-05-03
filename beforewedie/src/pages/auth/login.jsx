@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API } from "../../host";
 import Logo from '../../assets/logo.jpg'
+import bg from '../../assets/bg-travel1.jpg'
 
 function Login({ setToken }) {
   const navigate = useNavigate();
@@ -42,7 +43,8 @@ function Login({ setToken }) {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center mt-20 py-12 lg:px-8">
+    <div className="" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className="flex h-screen flex-col justify-center " >
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="mx-auto h-28 w-40 rounded-md"
@@ -59,7 +61,7 @@ function Login({ setToken }) {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium leading-6 text-balance"
+              className="block text-sm font-medium leading-6 text-black"
             >
               Email address
             </label>
@@ -118,6 +120,8 @@ function Login({ setToken }) {
         </form>
       </div>
     </div>
+    </div>
+    
   );
 }
 
