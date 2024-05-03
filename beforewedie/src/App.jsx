@@ -58,7 +58,7 @@ function App() {
 
   if (!token) {
     // Handle the case where token is null
-    return <SignInSide setToken={setToken} />;
+    return <Login setToken={setToken} />;
   }
 
   return (
