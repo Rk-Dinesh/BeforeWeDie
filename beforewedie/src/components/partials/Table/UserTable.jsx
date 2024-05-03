@@ -43,11 +43,12 @@ const COLUMNS = [
 const UserTable = ({Current_user}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
   
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [refresh]);
 
   const fetchData = async () => {
     try {
@@ -72,8 +73,8 @@ const UserTable = ({Current_user}) => {
   const handleDelete = async (userid) => {
     try {
       const response = await axios.delete(`${API}/delete?userid=${userid}`);
-    //  console.log(response);
-      window.location.reload();
+    
+     setRefresh(!refresh)
     } catch (error) {
       console.error("Error deleting :", error);
     }

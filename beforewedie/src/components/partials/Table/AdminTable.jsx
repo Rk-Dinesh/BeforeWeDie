@@ -46,11 +46,12 @@ const AdminTable = ({Current_user}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [allData, setAllData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [refresh]);
 
   const fetchData = async () => {
     try {
@@ -76,7 +77,7 @@ const AdminTable = ({Current_user}) => {
     try {
       const response = await axios.delete(`${API}/deleteadmin?userid=${userid}`);
       console.log(response);
-      window.location.reload();
+     setRefresh(!refresh)
     } catch (error) {
       console.error("Error deleting :", error);
     }

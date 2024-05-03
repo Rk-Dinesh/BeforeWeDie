@@ -47,11 +47,12 @@ const TripTable = ({Current_user}) => {
   const userid = params.get("userid");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
   
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [refresh]);
 
   const fetchData = async () => {
     try {
@@ -75,17 +76,18 @@ const TripTable = ({Current_user}) => {
 
   const handleDelete = async (tripid) => {
     try {
-      const response1 = await axios.delete(`${API}/deletetrip?tripid=${tripid}`);
-      const response2 = await axios.delete(`${API}/deletealltransport?tripid=${tripid}`);
-      const response4 = await axios.delete(`${API}/deleteallpitstop?tripid=${tripid}`);
-      const response3 = await axios.delete(`${API}/deletealltraveller?tripid=${tripid}`);
-      const response5 = await axios.delete(`${API}/deleteallalert?tripid=${tripid}`);
+      await axios.delete(`${API}/deletetrip?tripid=${tripid}`);
+      await axios.delete(`${API}/deletealltransport?tripid=${tripid}`);
+      await axios.delete(`${API}/deleteallpitstop?tripid=${tripid}`);
+      await axios.delete(`${API}/deletealltraveller?tripid=${tripid}`);
+      await axios.delete(`${API}/deleteallalert?tripid=${tripid}`);
       
-      window.location.reload();
+      setRefresh(!refresh); // Toggle 'refresh' state to trigger component refresh
     } catch (error) {
       console.error("Error deleting :", error);
     }
   };
+  
 
 
 

@@ -42,10 +42,11 @@ const COLUMNS = [
 const ClubTable = ({ Current_user }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [refresh]);
 
   const fetchData = async () => {
     try {
@@ -72,7 +73,7 @@ const ClubTable = ({ Current_user }) => {
       const response = await axios.delete(`${API}/deleteclub?club_id=${club_id}`);
       const response1 = await axios.delete(`${API}/deleteclubpostid?club_id=${club_id}`);
       //  console.log(response);
-      window.location.reload();
+     setRefresh(!refresh)
     } catch (error) {
       console.error("Error deleting :", error);
     }
