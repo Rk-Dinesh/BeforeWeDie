@@ -1,0 +1,1 @@
+import{j as r}from"./index-dZ8zWVJ6.js";import{I as x}from"./iconify--ynwmrU7.js";const i=({icon:o,className:s,width:t,rotate:n,hFlip:m,vFlip:e})=>r.jsx(r.Fragment,{children:r.jsx(x,{width:t,rotate:n,hFlip:m,icon:o,className:s,vFlip:e})});export{i as I};
