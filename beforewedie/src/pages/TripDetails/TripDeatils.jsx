@@ -34,21 +34,21 @@ function TripDeatils() {
 
   const fetchData = async () => {
     try {
-      const transport = await axios.get(`${API}/gettransport?tripid=${tripid}`);
+      const transport = await axios.get(`${API}/transport/gettransport?tripid=${tripid}`);
          const transportData = transport.data.tokens[0]
        //  console.log(transportData)
         setTransport(transportData);
 
-        const pitstop = await axios.get(`${API}/getpitstop?tripid=${tripid}`);
+        const pitstop = await axios.get(`${API}/pitstop/getpitstop?tripid=${tripid}`);
         const pitstopData = pitstop.data.token[0]
         
          setPitstop(pitstopData);
         
-        const travel = await axios.get(`${API}/gettraveller?tripid=${tripid}`);
+        const travel = await axios.get(`${API}/cotraveller/gettraveller?tripid=${tripid}`);
         const travellerData = travel.data.token[0]
         setTraveller(travellerData);
 
-        const Alert = await axios.get(`${API}/getalert?tripid=${tripid}`);
+        const Alert = await axios.get(`${API}/tripalert/getalert?tripid=${tripid}`);
         const alertData = Alert.data.token[0]
         setAlert(alertData);
 

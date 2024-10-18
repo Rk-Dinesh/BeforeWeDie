@@ -22,7 +22,7 @@ function AdminForm() {
     event.preventDefault();
 
     axios
-      .post(`${API}/admin`, formData)
+      .post(`${API}/admin/admin`, formData)
       .then((response) => {
        // console.log(response.data);
         history.back();

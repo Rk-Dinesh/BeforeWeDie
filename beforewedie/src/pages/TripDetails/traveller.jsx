@@ -19,7 +19,7 @@ const TravellerDetails = () => {
 
     const fetchData = async () => {
         try {
-            const travel = await axios.get(`${API}/gettraveller?tripid=${tripid}`);
+            const travel = await axios.get(`${API}/cotraveller/gettraveller?tripid=${tripid}`);
             const travellerData = travel.data.token
             setTraveller(travellerData);
 

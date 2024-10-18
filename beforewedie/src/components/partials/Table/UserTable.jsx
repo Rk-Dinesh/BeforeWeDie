@@ -52,7 +52,7 @@ const UserTable = ({Current_user}) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API}/getuser`);
+      const response = await axios.get(`${API}/user/getuser`);
 
       if (response.status === 200) {
         // Add rowIndex to each user object and set it in state
@@ -67,12 +67,14 @@ const UserTable = ({Current_user}) => {
     } catch (error) {
       console.error("Error fetching Admin data:", error);
       setLoading(false);
+    }finally {
+      setLoading(false);
     }
   };
 
   const handleDelete = async (userid) => {
     try {
-      const response = await axios.delete(`${API}/delete?userid=${userid}`);
+      const response = await axios.delete(`${API}/user/delete?userid=${userid}`);
     
      setRefresh(!refresh)
     } catch (error) {
@@ -114,6 +116,11 @@ const UserTable = ({Current_user}) => {
   } = tableInstance;
 
   const { globalFilter, pageIndex, pageSize } = state;
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
 
   return (
     <>

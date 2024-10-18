@@ -20,7 +20,7 @@ const PitstopDetails = () => {
 
     const fetchData = async () => {
         try {
-            const pitstop = await axios.get(`${API}/getpitstop?tripid=${tripid}`);
+            const pitstop = await axios.get(`${API}/pitstop/getpitstop?tripid=${tripid}`);
             const pitstopData = pitstop.data.token
 
             setPitstop(pitstopData);

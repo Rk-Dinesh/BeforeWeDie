@@ -56,31 +56,29 @@ const TripTable = ({Current_user}) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API}/gettrip?userid=${userid}`);
-       
+      const response = await axios.get(`${API}/trip/gettrip?userid=${userid}`);
+
       if (response.status === 200) {
-        
         const usersWithRowIndex = response.data.token.map((user, index) => ({
           ...user,
           rowIndex: index + 1,
         }));
         setData(usersWithRowIndex);
-       // console.log(usersWithRowIndex)
       }
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching Admin data:", error);
+    } finally {
       setLoading(false);
     }
   };
 
   const handleDelete = async (tripid) => {
     try {
-      await axios.delete(`${API}/deletetrip?tripid=${tripid}`);
-      await axios.delete(`${API}/deletealltransport?tripid=${tripid}`);
-      await axios.delete(`${API}/deleteallpitstop?tripid=${tripid}`);
-      await axios.delete(`${API}/deletealltraveller?tripid=${tripid}`);
-      await axios.delete(`${API}/deleteallalert?tripid=${tripid}`);
+      await axios.delete(`${API}/trip/deletetrip?tripid=${tripid}`);
+      await axios.delete(`${API}/transport/deletealltransport?tripid=${tripid}`);
+      await axios.delete(`${API}/pitstop/deleteallpitstop?tripid=${tripid}`);
+      await axios.delete(`${API}/cotraveller/deletealltraveller?tripid=${tripid}`);
+      await axios.delete(`${API}/tripalert/deleteallalert?tripid=${tripid}`);
       
       setRefresh(!refresh); // Toggle 'refresh' state to trigger component refresh
     } catch (error) {
@@ -123,6 +121,10 @@ const TripTable = ({Current_user}) => {
   } = tableInstance;
 
   const { globalFilter, pageIndex, pageSize } = state;
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>

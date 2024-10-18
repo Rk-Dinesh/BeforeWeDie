@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState , useEffect,lazy} from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import "core-js/stable/atob";
@@ -10,24 +10,23 @@ import { API } from "./host";
 import 'react-toastify/dist/ReactToastify.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Dashboard from "./pages/dashboard";
-import Admin from "./pages/Admin";
-import Users from "./pages/Users";
-import AdminForm from "./pages/Admin/AdminForm";
-import UpdateForm from "./pages/Admin/UpdateForm";
+const Dashboard = lazy(() => import("./pages/dashboard"));
+const Admin = lazy(() => import("./pages/Admin"));
+const Users = lazy(() => import("./pages/Users"));
+const AdminForm = lazy(() => import("./pages/Admin/AdminForm"));
+const UpdateForm = lazy(() => import("./pages/Admin/UpdateForm"));
 import Login from "./pages/auth/login";
-import Layout from "./layout/Layout";
-import UserProfile from "./components/partials/header/Tools/UserProfile";
-import Trip from "./pages/Trip";
-import TripDeatils from "./pages/TripDetails/TripDeatils";
-import AlertDetails from "./pages/TripDetails/alert";
-import PitstopDetails from "./pages/TripDetails/pitstop";
-import TransportDetails from "./pages/TripDetails/transport";
-import TravellerDetails from "./pages/TripDetails/traveller";
-import ProfileUser from "./pages/Users/ProfileUser";
-import Club from "./pages/Club";
-
-import Profileclub from "./pages/Club/profileclub";
+const Layout = lazy(() => import("./layout/Layout"));
+const UserProfile = lazy(() => import("./components/partials/header/Tools/UserProfile"));
+const Trip = lazy(() => import("./pages/Trip"));
+const TripDetails = lazy(() => import("./pages/TripDetails/TripDeatils"));
+const AlertDetails = lazy(() => import("./pages/TripDetails/alert"));
+const PitstopDetails = lazy(() => import("./pages/TripDetails/pitstop"));
+const TransportDetails = lazy(() => import("./pages/TripDetails/transport"));
+const TravellerDetails = lazy(() => import("./pages/TripDetails/traveller"));
+const ProfileUser = lazy(() => import("./pages/Users/ProfileUser"));
+const Club = lazy(() => import("./pages/Club"));
+const Profileclub = lazy(() => import("./pages/Club/profileclub"));
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -41,7 +40,7 @@ function App() {
 
       const fetchUserData = async () => {
         try {
-          const response = await axios.get(`${API}/getemail?email=${decodedEmail}`);
+          const response = await axios.get(`${API}/admin/getemail?email=${decodedEmail}`);
           const responseData = response.data;
           setUserData(responseData.role);
         } catch (error) {
@@ -73,7 +72,7 @@ function App() {
           <Route path="admin" element={<Admin Current_user ={Current_user}/>} />
           <Route path="trip" element={<Trip Current_user ={Current_user}/>} />
           <Route path="club" element={<Club Current_user ={Current_user}/>} />
-          <Route path="tripdetails" element={<TripDeatils />} />
+          <Route path="tripdetails" element={<TripDetails />} />
           <Route path="alert" element={<AlertDetails />} />
           <Route path="pitstop" element={<PitstopDetails />} />
           <Route path="transport" element={<TransportDetails />} />

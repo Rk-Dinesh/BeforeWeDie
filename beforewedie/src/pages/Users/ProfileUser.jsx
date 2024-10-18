@@ -24,11 +24,11 @@ const ProfileUser = () => {
 
   const fetchData = async () => {
     try {
-      const user = await axios.get(`${API}/getUserId?userid=${userid}`);
+      const user = await axios.get(`${API}/user/getUserId?userid=${userid}`);
       const userData = user.data
       //console.log(userData)
       setUser([userData]);
-      const Post = await axios.get(`${API}/getcommunityId?userid=${userid}`);
+      const Post = await axios.get(`${API}/community/getcommunityId?userid=${userid}`);
       const postData = Post.data.token
       console.log(postData)
       setPost(postData);
@@ -42,7 +42,7 @@ const ProfileUser = () => {
   const handleDelete = async (community_id) => {
     try {
 
-      await axios.delete(`${API}/deletecommunity?community_id=${community_id}`);
+      await axios.delete(`${API}/community/deletecommunity?community_id=${community_id}`);
 
 
       setPost(prevCategories =>

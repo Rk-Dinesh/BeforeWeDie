@@ -19,7 +19,7 @@ const TransportDetails = () => {
 
       const fetchData = async () => {
         try {
-          const transport = await axios.get(`${API}/gettransport?tripid=${tripid}`);
+          const transport = await axios.get(`${API}/transport/gettransport?tripid=${tripid}`);
              const transportData = transport.data.tokens
              
             setTransport(transportData);

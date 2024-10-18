@@ -51,7 +51,7 @@ const Layout = ({token}) => {
               contentWidth === "boxed" ? "container mx-auto" : "container-fluid"
             }
           >
-            <Suspense >
+            <Suspense fallback={<div>Loading...</div>}>
               <motion.div
                 key={location.pathname}
                 initial="pageInitial"

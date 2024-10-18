@@ -44,7 +44,7 @@ const UpdateAdmin = ({Current_user}) => {
     const fetchUserData = async () => {
       try {
        
-        const response = await axios.get(`${API}/getadmin?userid=${userid}`);
+        const response = await axios.get(`${API}/admin/getadmin?userid=${userid}`);
         const responseData = response.data;
         //console.log(responseData)
 
@@ -73,7 +73,7 @@ const UpdateAdmin = ({Current_user}) => {
 
     try {
       
-      const response = await axios.put(`${API}/updateadmin?userid=${userid}`, {
+      const response = await axios.put(`${API}/admin/updateadmin?userid=${userid}`, {
         userid,
         fname: fname,
         lname: lname,

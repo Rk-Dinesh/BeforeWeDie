@@ -50,7 +50,7 @@ const ClubTable = ({ Current_user }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API}/getclub`);
+      const response = await axios.get(`${API}/club/getclub`);
 
       if (response.status === 200) {
         // Add rowIndex to each user object and set it in state
@@ -65,13 +65,15 @@ const ClubTable = ({ Current_user }) => {
     } catch (error) {
       console.error("Error fetching Admin data:", error);
       setLoading(false);
+    }finally {
+      setLoading(false);
     }
   };
 
   const handleDelete = async (club_id) => {
     try {
-      const response = await axios.delete(`${API}/deleteclub?club_id=${club_id}`);
-      const response1 = await axios.delete(`${API}/deleteclubpostid?club_id=${club_id}`);
+      const response = await axios.delete(`${API}/club/deleteclub?club_id=${club_id}`);
+      const response1 = await axios.delete(`${API}/clubpost/deleteclubpostid?club_id=${club_id}`);
       //  console.log(response);
      setRefresh(!refresh)
     } catch (error) {
@@ -110,6 +112,11 @@ const ClubTable = ({ Current_user }) => {
   } = tableInstance;
 
   const { globalFilter, pageIndex, pageSize } = state;
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
 
   return (
     <>

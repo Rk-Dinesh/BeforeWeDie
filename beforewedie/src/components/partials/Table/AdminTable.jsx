@@ -55,7 +55,10 @@ const AdminTable = ({Current_user}) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API}/getadmin1`);
+      const response = await axios.get(`${API}/admin/getadmin1`);
+      console.log(response);
+      const file = response.data
+      console.log(file);
 
       if (response.status === 200) {
         // Add rowIndex to each user object and set it in state
@@ -70,12 +73,14 @@ const AdminTable = ({Current_user}) => {
     } catch (error) {
       console.error("Error fetching Admin data:", error);
       setLoading(false);
+    }finally {
+      setLoading(false);
     }
   };
 
   const handleDelete = async (userid) => {
     try {
-      const response = await axios.delete(`${API}/deleteadmin?userid=${userid}`);
+      const response = await axios.delete(`${API}/admin/deleteadmin?userid=${userid}`);
       console.log(response);
      setRefresh(!refresh)
     } catch (error) {
@@ -117,6 +122,12 @@ const AdminTable = ({Current_user}) => {
   } = tableInstance;
 
   const { globalFilter, pageIndex, pageSize } = state;
+
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
 
   const exportData = async(format) => {
     if (format === 'csv') {

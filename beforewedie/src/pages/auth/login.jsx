@@ -27,7 +27,7 @@ function Login({ setToken }) {
         "Content-Type": "application/json",
       };
 
-      const response = await axios.post(`${API}/adminlogin`, formData, {
+      const response = await axios.post(`${API}/admin/adminlogin`, formData, {
         headers,
       });
       const { token } = response.data;

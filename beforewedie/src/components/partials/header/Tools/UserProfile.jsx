@@ -36,7 +36,7 @@ const UserProfile = ({ token , Current_user}) => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          `${API}/getemail?email=${decodedEmail}`
+          `${API}/admin/getemail?email=${decodedEmail}`
         );
         const responseData = response.data;
         setUserData(responseData);

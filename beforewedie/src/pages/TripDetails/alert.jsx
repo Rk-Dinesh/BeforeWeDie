@@ -20,7 +20,7 @@ const AlertDetails = () => {
 
     const fetchData = async () => {
         try {
-            const Alert = await axios.get(`${API}/getalert?tripid=${tripid}`);
+            const Alert = await axios.get(`${API}/tripalert/getalert?tripid=${tripid}`);
         const alertData = Alert.data.token
         setAlert(alertData);
 

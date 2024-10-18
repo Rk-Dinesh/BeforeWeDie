@@ -20,11 +20,11 @@ const ProfileClub = () => {
 
   const fetchData = async () => {
     try {
-      const user = await axios.get(`${API}/getclubId?club_id=${club_id}`);
+      const user = await axios.get(`${API}/club/getclubId?club_id=${club_id}`);
       const userData = user.data.token;
       console.log(userData);
       setUser(userData);
-      const Post = await axios.get(`${API}/getclubpostId?club_id=${club_id}`);
+      const Post = await axios.get(`${API}/clubpost/getclubpostId?club_id=${club_id}`);
       const postData = Post.data.token;
       console.log(postData);
       setPost(postData);
@@ -35,7 +35,7 @@ const ProfileClub = () => {
 
   const handleDelete = async (clubpost_id) => {
     try {
-      await axios.delete(`${API}/deleteclubpost?clubpost_id=${clubpost_id}`);
+      await axios.delete(`${API}/clubpost/deleteclubpost?clubpost_id=${clubpost_id}`);
 
       setPost((prevCategories) =>
         prevCategories.filter(
